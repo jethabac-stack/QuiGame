@@ -1,0 +1,32 @@
+{
+  "id": "sample-002",
+  "title": "Science Challenge",
+  "teacher": "Mr. Johnson",
+  "createdAt": "2024-01-15T11:00:00Z",
+  "questions": [
+    {
+      "text": "What is the chemical symbol for gold?",
+      "options": ["Go", "Gd", "Au", "Ag"],
+      "correct": 2,
+      "timer": 12
+    },
+    {
+      "text": "What is the process by which plants make their own food?",
+      "options": ["Respiration", "Decomposition", "Photosynthesis", "Fermentation"],
+      "correct": 2,
+      "timer": 12
+    },
+    {
+      "text": "How many bones are in the adult human body?",
+      "options": ["186", "206", "226", "246"],
+      "correct": 1,
+      "timer": 12
+    },
+    {
+      "text": "What is the speed of light?",
+      "options": ["300,000 km/s", "150,000 km/s", "450,000 km/s", "600,000 km/s"],
+      "correct": 0,
+      "timer": 15
+    }
+  ]
+}

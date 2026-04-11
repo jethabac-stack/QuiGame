@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teacher Dashboard - Quiz Manager</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#6366f1',
+            secondary: '#8b5cf6',
+          },
+          keyframes: {
+            slideInDown: {
+              '0%': { transform: 'translateY(-20px)', opacity: '0' },
+              '100%': { transform: 'translateY(0)', opacity: '1' }
+            }
+          },
+          animation: {
+            slideInDown: 'slideInDown 0.3s ease-out'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @keyframes modalFadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95) translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    #quizFormModal:not(.hidden) {
+      animation: modalFadeIn 0.3s ease-out;
+    }
+
+    #quizFormModal:not(.hidden) .bg-white {
+      animation: modalFadeIn 0.3s ease-out;
+    }
+
+    .quiz-card {
+      transition: all 0.3s ease;
+    }
+
+    .quiz-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.2);
+    }
+
+    .btn-crud {
+      transition: all 0.2s ease;
+    }
+
+    .btn-crud:hover {
+      transform: scale(1.05);
+    }
+
+    .btn-crud:active {
+      transform: scale(0.95);
+    }
+
+    input:focus, textarea:focus {
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    }
+
+    .glassmorphism {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .glassmorphism-dark {
+      background: rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .glass-input {
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3) !important;
+      transition: all 0.3s ease;
+    }
+
+    .glass-input:focus {
+      background: rgba(255, 255, 255, 0.7);
+      border: 2px solid rgba(99, 102, 241, 0.5) !important;
+      box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-indigo-600 to-purple-600 min-h-screen">
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    <nav class="flex justify-between items-center glassmorphism rounded-2xl shadow-2xl p-6 mb-8">
+      <h1 class="text-3xl font-bold text-white drop-shadow-lg">📚 Teacher Dashboard</h1>
+      <a href="/" class="glassmorphism-dark text-white px-6 py-2 rounded-xl font-semibold transition duration-300">Back Home</a>
+    </nav>
+
+    <div class="space-y-8">
+      <!-- Quiz List -->
+      <div class="bg-white rounded-lg shadow-lg p-8">
+          <h2 class="text-3xl font-bold text-black mb-6 flex items-center gap-2">
+            <span class="text-4xl">📋</span> Your Quizzes
+          </h2>
+          <button onclick="openNewQuizForm()" class="group bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-3 px-8 rounded-lg mb-6 transform hover:scale-105 transition duration-200 shadow-md hover:shadow-lg flex items-center gap-2">
+            <span class="group-hover:rotate-90 transition duration-300">✨</span> Create New Quiz
+          </button>
+        <div id="quizList" class="space-y-4">
+          <p class="text-center text-black py-8">Loading quizzes...</p>
+        </div>
+      </div>
+
+      <!-- Quiz Form Modal -->
+      <div id="quizFormModal" class="hidden fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-50 p-4 animated">
+        <div class="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto transform transition-all duration-300 scale-100">
+          <div class="flex justify-between items-center bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-6 rounded-t-xl">
+            <h2 id="formTitle" class="text-2xl font-bold flex items-center gap-2"><span>📝</span> Create New Quiz</h2>
+            <button onclick="closeQuizForm()" class="text-2xl font-bold hover:text-indigo-100 transition duration-200 hover:rotate-90">&times;</button>
+          </div>
+
+          <form id="quizForm" class="p-6 space-y-6">
+            <div class="space-y-2">
+              <label class="block text-gray-900 font-semibold">Quiz Title *</label>
+              <input type="text" id="quizTitle" required placeholder="e.g., Science Basics" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-200 transition">
+            </div>
+
+            <div class="space-y-2">
+              <label class="block text-gray-900 font-semibold">Teacher Name (Optional)</label>
+              <input type="text" id="teacherName" placeholder="Your name" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-600 focus:ring-2 focus:ring-indigo-200 transition">
+            </div>
+
+            <!-- Questions Section -->
+            <div class="space-y-4 pt-4 border-t-2 border-gray-200">
+              <h3 class="text-xl font-bold text-gray-800">Questions</h3>
+              <div id="questionsContainer" class="space-y-4"></div>
+              <button type="button" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg transition duration-200 shadow-md" onclick="addQuestion()">+ Add Question</button>
+            </div>
+
+            <div class="flex gap-4 pt-8 border-t-2 border-gray-200">
+              <button type="button" class="flex-1 bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 rounded-lg transition duration-200 shadow-md" onclick="closeQuizForm()">Cancel</button>
+              <button type="submit" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-lg transition duration-200 shadow-md">Save Quiz</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/teacher-dashboard.js"></script>
+</body>
+</html>
