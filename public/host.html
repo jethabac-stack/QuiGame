@@ -54,18 +54,17 @@
   <div class="max-w-6xl mx-auto px-4 py-8">
     <nav class="flex justify-between items-center glassmorphism rounded-2xl shadow-2xl p-6 mb-8">
       <h1 class="text-3xl font-bold text-white drop-shadow-lg">🎮 Host Game</h1>
-      <a href="/" class="glassmorphism-dark text-white px-6 py-2 rounded-xl font-semibold transition duration-300">Back Home</a>
+      <a href="/dashboard" class="glassmorphism-dark text-white px-6 py-2 rounded-xl font-semibold transition duration-300">Back to Dashboard</a>
     </nav>
+
+    <div id="hostNotification" class="hidden mb-6 rounded-2xl border border-red-300 bg-red-50 px-4 py-4 text-sm text-red-700 shadow-sm"></div>
 
     <!-- Game Setup -->
     <div id="setupPhase" class="glass-card rounded-3xl shadow-2xl p-8">
-      <h2 class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 mb-8">Select Quiz to Start</h2>
-      
+      <h2 class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 mb-6">Start Your Quiz</h2>
+
       <div class="mb-6">
-        <label class="block text-lg font-semibold text-gray-900 mb-3">Choose Quiz *</label>
-        <select id="quizSelect" class="glass-input w-full px-4 py-3 rounded-xl text-lg">
-          <option value="">-- Select a quiz --</option>
-        </select>
+        <p class="text-gray-700 text-lg">Your quiz will be loaded automatically from the host dashboard selection.</p>
       </div>
 
       <div class="mb-6">
@@ -73,7 +72,7 @@
         <input type="text" id="teacherName" placeholder="Enter your name" class="glass-input w-full px-4 py-3 rounded-xl">
       </div>
 
-      <button onclick="startGame()" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-4 rounded-xl text-lg transition duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">Start Game 🚀</button>
+      <button id="hostStartButton" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-4 rounded-xl text-lg transition duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">Start Game 🚀</button>
     </div>
 
     <!-- Game Lobby -->
@@ -116,6 +115,8 @@
           </div>
           
           <div id="optionsDisplay" class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6"></div>
+          
+          <div id="correctAnswerDisplay" class="hidden glassmorphism rounded-2xl p-4 bg-green-50 border-2 border-green-400"></div>
         </div>
 
         <!-- Live Leaderboard Sidebar -->
@@ -169,6 +170,6 @@
   </footer>
 
   <script src="/socket.io/socket.io.js"></script>
-  <script src="/js/host.js"></script>
+  <script type="module" src="/js/host-firebase.js?v=1"></script>
 </body>
 </html>

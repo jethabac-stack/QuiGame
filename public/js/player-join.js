@@ -21,16 +21,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Join game
 function joinGame() {
-  const pin = document.getElementById('gamePin').value;
-  const nickname = document.getElementById('playerNickname').value;
+  const pin = document.getElementById('gamePin').value.trim();
+  const nickname = document.getElementById('playerNickname').value.trim();
+
+  clearJoinError();
 
   if (!pin || pin.length !== 6) {
-    alert('Please enter a valid 6-digit PIN');
+    showJoinError('Please enter the full 6-digit game PIN shown by your teacher.');
     return;
   }
 
   if (!nickname) {
-    alert('Please enter your nickname');
+    showJoinError('Please enter your nickname so the teacher can identify you.');
     return;
   }
 
@@ -41,6 +43,20 @@ function joinGame() {
   socket.emit('player-join', { pin, nickname });
   showPhase('waiting');
   setupSocketListeners();
+}
+
+function showJoinError(message) {
+  const errorElement = document.getElementById('joinError');
+  if (!errorElement) return;
+  errorElement.textContent = message;
+  errorElement.classList.remove('hidden');
+}
+
+function clearJoinError() {
+  const errorElement = document.getElementById('joinError');
+  if (!errorElement) return;
+  errorElement.textContent = '';
+  errorElement.classList.add('hidden');
 }
 
 // Submit answer

@@ -79,11 +79,11 @@ class GameRoom {
     this.questionAnswers.set(this.currentQuestionIndex, questionAnswerers);
   }
 
-  // Get top 5 scores
+  // Get top scores
   getTopScores(limit = 5) {
     const topScores = Array.from(this.scores.entries())
       .map(([playerId, score]) => ({
-        nickname: this.players.get(playerId)?.nickname || 'Unknown',
+        name: this.players.get(playerId)?.nickname || 'Unknown',
         score,
         playerId
       }))
@@ -98,7 +98,7 @@ class GameRoom {
   getAllScores() {
     return Array.from(this.scores.entries())
       .map(([playerId, score]) => ({
-        nickname: this.players.get(playerId)?.nickname || 'Unknown',
+        name: this.players.get(playerId)?.nickname || 'Unknown',
         score,
         playerId
       }))
