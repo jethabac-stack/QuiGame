@@ -107,8 +107,11 @@
     }
   </style>
 </head>
-<body class="bg-gradient-to-br from-indigo-600 to-purple-600 min-h-screen">
-  <div class="max-w-6xl mx-auto px-4 py-8">
+<body class="bg-black min-h-screen relative overflow-hidden">
+  <!-- Math Symbols Rain Canvas -->
+  <canvas id="mathRain" class="fixed inset-0 pointer-events-none"></canvas>
+  
+  <div class="max-w-6xl mx-auto px-4 py-8 relative z-10">
     <nav class="flex justify-between items-center glassmorphism rounded-2xl shadow-2xl p-6 mb-8">
       <div class="flex items-center gap-3">
         <img src="/image/logo.png" alt="Story Boarding Portal Logo" class="w-16 h-16">
@@ -169,7 +172,7 @@
 
   <!-- Footer -->
   <footer class="mt-16 py-8">
-    <div class="max-w-4xl mx-auto px-4 text-center">
+    <div class="max-w-6xl mx-auto px-4 text-center">
       <div class="glassmorphism rounded-2xl p-6">
         <p class="text-white font-semibold text-lg drop-shadow-lg">
           &copy; 2026 BSED-MATH. All Rights Reserved. <br> Designed with ❤️ by Jetty.
@@ -180,5 +183,6 @@
 
   <script src="/socket.io/socket.io.js"></script>
   <script src="/js/teacher-dashboard.js"></script>
+  <script src="/js/math-rain.js"></script>
 </body>
 </html>

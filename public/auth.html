@@ -18,22 +18,29 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #000000;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 10px;
+            position: relative;
+            overflow: auto;
         }
 
         .auth-container {
-            background: white;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
             border-radius: 15px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
             max-width: 450px;
             width: 100%;
-            padding: 40px;
+            padding: 25px;
             animation: slideIn 0.5s ease-out;
+            position: relative;
+            z-index: 10;
+            margin: auto;
         }
 
         @keyframes slideIn {
@@ -49,34 +56,33 @@
 
         .auth-header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         .auth-header h1 {
             color: #333;
-            font-size: 28px;
+            font-size: 20px;
             margin-bottom: 5px;
         }
 
         .auth-header p {
             color: #666;
-            font-size: 14px;
+            font-size: 12px;
         }
-
         .auth-tabs {
             display: flex;
-            gap: 10px;
-            margin-bottom: 30px;
+            gap: 8px;
+            margin-bottom: 20px;
             border-bottom: 2px solid #eee;
         }
 
         .auth-tab {
             flex: 1;
-            padding: 12px;
+            padding: 10px;
             background: none;
             border: none;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 600;
             color: #999;
             transition: all 0.3s ease;
@@ -95,7 +101,7 @@
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             display: none;
         }
 
@@ -105,11 +111,11 @@
 
         .form-group input {
             width: 100%;
-            padding: 12px;
-            margin-bottom: 8px;
+            padding: 10px;
+            margin-bottom: 6px;
             border: 2px solid #ddd;
             border-radius: 8px;
-            font-size: 14px;
+            font-size: 13px;
             transition: border-color 0.3s ease;
         }
 
@@ -121,10 +127,10 @@
 
         .form-group label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             color: #333;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13px;
         }
 
         .password-field {
@@ -140,22 +146,22 @@
 
         .toggle-password {
             position: absolute;
-            right: 12px;
+            right: 10px;
             background: none;
             border: none;
             cursor: pointer;
             color: #667eea;
-            font-size: 18px;
+            font-size: 16px;
         }
 
         .error-message {
             display: none;
             background-color: #fee;
             color: #c33;
-            padding: 12px;
+            padding: 10px;
             border-radius: 8px;
-            margin-bottom: 20px;
-            font-size: 14px;
+            margin-bottom: 15px;
+            font-size: 12px;
             border-left: 4px solid #c33;
         }
 
@@ -167,10 +173,10 @@
             display: none;
             background-color: #efe;
             color: #3c3;
-            padding: 12px;
+            padding: 10px;
             border-radius: 8px;
-            margin-bottom: 20px;
-            font-size: 14px;
+            margin-bottom: 15px;
+            font-size: 12px;
             border-left: 4px solid #3c3;
         }
 
@@ -180,12 +186,12 @@
 
         .btn {
             width: 100%;
-            padding: 12px;
+            padding: 10px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -211,8 +217,8 @@
 
         .btn.loading::after {
             content: '';
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
             border: 2px solid rgba(255, 255, 255, 0.3);
             border-top-color: white;
             border-radius: 50%;
@@ -225,9 +231,9 @@
 
         .divider {
             text-align: center;
-            margin: 20px 0;
+            margin: 15px 0;
             color: #999;
-            font-size: 14px;
+            font-size: 12px;
         }
 
         .divider::before,
@@ -241,23 +247,23 @@
         }
 
         .divider::before {
-            margin-right: 10px;
+            margin-right: 8px;
         }
 
         .divider::after {
-            margin-left: 10px;
+            margin-left: 8px;
         }
 
         .checkbox-group {
             display: flex;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .checkbox-group input[type="checkbox"] {
-            margin-right: 10px;
-            width: 18px;
-            height: 18px;
+            margin-right: 8px;
+            width: 16px;
+            height: 16px;
             cursor: pointer;
         }
 
@@ -267,23 +273,25 @@
             font-weight: 400;
             color: #666;
             cursor: pointer;
+            font-size: 13px;
         }
 
         .helper-text {
-            font-size: 12px;
+            font-size: 11px;
             color: #999;
-            margin-top: 8px;
+            margin-top: 6px;
         }
 
         .landing-link {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 15px;
         }
 
         .landing-link a {
             color: #667eea;
             text-decoration: none;
             font-weight: 600;
+            font-size: 12px;
             transition: color 0.3s ease;
         }
 
@@ -295,7 +303,7 @@
         .loading-spinner {
             display: none;
             text-align: center;
-            padding: 20px;
+            padding: 15px;
         }
 
         .loading-spinner.show {
@@ -304,25 +312,76 @@
 
         @media (max-width: 480px) {
             .auth-container {
-                padding: 25px;
+                padding: 18px;
+                border-radius: 12px;
             }
 
             .auth-header h1 {
-                font-size: 22px;
+                font-size: 18px;
+            }
+
+            .auth-header p {
+                font-size: 11px;
             }
 
             .auth-tab {
+                font-size: 13px;
+                padding: 10px;
+            }
+
+            .form-group label {
+                font-size: 12px;
+            }
+
+            .form-group input {
+                font-size: 12px;
+                padding: 8px;
+            }
+
+            .helper-text {
+                font-size: 11px;
+            }
+        }
+
+        @media (min-width: 481px) and (max-width: 768px) {
+            .auth-container {
+                padding: 30px;
+            }
+
+            .auth-header h1 {
+                font-size: 24px;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .auth-container {
+                padding: 40px;
+            }
+
+            .auth-header h1 {
+                font-size: 28px;
+            }
+
+            .form-group label {
                 font-size: 14px;
+            }
+
+            .form-group input {
+                font-size: 14px;
+                padding: 12px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Math Symbols Rain Canvas -->
+    <canvas id="mathRain" class="fixed inset-0 pointer-events-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;"></canvas>
+    
     <div class="auth-container">
         <!-- Header -->
         <div class="auth-header">
-            <img src="/image/logo.png" alt="Story Boarding Portal Logo" style="width: 80px; height: auto; margin: 0 auto 10px; display: block;">
-            <h2 style="color: #667eea; font-size: 20px; margin-bottom: 5px; font-weight: bold;">Story Boarding Portal</h2>
+            <img src="/image/logo.png" alt="Story Boarding Portal Logo" style="width: 60px; height: auto; margin: 0 auto 8px; display: block;">
+            <h2 style="color: #667eea; font-size: 18px; margin-bottom: 5px; font-weight: bold;">Story Boarding Portal</h2>
             <p>Host Dashboard Authentication</p>
         </div>
 
@@ -410,6 +469,13 @@
     </div>
 
     <!-- Scripts -->
+    <script>
+        // Helper function - must be in global scope for onclick handlers
+        function togglePassword(fieldId) {
+            const field = document.getElementById(fieldId);
+            field.type = field.type === 'password' ? 'text' : 'password';
+        }
+    </script>
     <script type="module">
         import { registerHost, loginHost, getCurrentUser, onAuthChange } from './js/firebase-config.js';
 
@@ -537,11 +603,6 @@
         });
 
         // Helper functions
-        function togglePassword(fieldId) {
-            const field = document.getElementById(fieldId);
-            field.type = field.type === 'password' ? 'text' : 'password';
-        }
-
         function showError(message) {
             clearMessages();
             const errorDiv = document.getElementById('errorMsg');
@@ -593,5 +654,6 @@
             window.location.href = getRedirectPath();
         }
     </script>
+    <script src="/js/math-rain.js"></script>
 </body>
 </html>

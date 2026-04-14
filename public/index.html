@@ -33,40 +33,49 @@
       backdrop-filter: blur(20px);
       border: 1px solid rgba(255, 255, 255, 0.3);
     }
+
+    .glassmorphism.main-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
   </style>
 </head>
-<body class="bg-gradient-to-br from-indigo-600 to-purple-600 min-h-screen">
-  <div class="max-w-4xl mx-auto px-4 py-8">
-    <div class="glass-card rounded-3xl shadow-2xl p-12 text-center max-w-2xl mx-auto mt-20">
-      <img src="/image/logo.png" alt="Story Boarding Portal Logo" class="w-32 h-32 mx-auto mb-4">
-      <h2 class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 mb-2">Story Boarding Portal</h2>
-      <p class="text-xl text-gray-900 mb-12 font-semibold">Real-Time Multiplayer Quiz Game</p>
+<body class="bg-black min-h-screen relative overflow-auto">
+  <!-- Math Symbols Rain Canvas -->
+  <canvas id="mathRain" class="fixed inset-0 pointer-events-none"></canvas>
+  
+  <div class="max-w-4xl mx-auto px-4 py-8 relative z-10">
+    <div class="glassmorphism main-card rounded-3xl shadow-2xl p-4 md:p-8 text-center max-w-lg mx-auto mt-6 md:mt-12">
+      <img src="/image/logo.png" alt="Story Boarding Portal Logo" class="w-20 h-20 md:w-24 md:h-24 mx-auto mb-3">
+      <h2 class="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 mb-1">Story Boarding Portal</h2>
+      <p class="text-base md:text-lg text-gray-900 mb-6 md:mb-8 font-semibold">Real-Time Multiplayer Quiz Game</p>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-        <button onclick="goToAuth()" class="bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white font-bold py-4 px-8 rounded-xl transform hover:scale-105 transition duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 mb-6 md:mb-8">
+        <button onclick="goToAuth()" class="w-full bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white font-bold py-2 md:py-3 px-4 md:px-6 rounded-lg transform hover:scale-102 transition duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 text-xs md:text-sm">
           👨‍🏫 Host Dashboard
         </button>
-        <button onclick="goToJoin()" class="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-bold py-4 px-8 rounded-xl transform hover:scale-105 transition duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
+        <button onclick="goToJoin()" class="w-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-bold py-2 md:py-3 px-4 md:px-6 rounded-lg transform hover:scale-102 transition duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 text-xs md:text-sm">
           🎮 Join Game
         </button>
       </div>
       
-      <div class="glassmorphism rounded-2xl p-8 text-left">
-        <h3 class="text-2xl font-bold text-black mb-6 text-center drop-shadow-lg">How to Play:</h3>
-        <ul class="space-y-3 text-black">
-          <li class="flex items-start gap-3"><span class="text-xl">👨‍🏫</span> <span><strong>Teachers:</strong> Create quizzes, manage questions, and host games</span></li>
-          <li class="flex items-start gap-3"><span class="text-xl">🎮</span> <span><strong>Players:</strong> Join with a PIN and compete in real-time</span></li>
-          <li class="flex items-start gap-3"><span class="text-xl">⚡</span> <span><strong>Scoring:</strong> Points based on speed and correctness - displayed in real-time!</span></li>
+      <div class="glassmorphism rounded-2xl p-4 md:p-6 text-left">
+        <h3 class="text-lg md:text-xl font-bold text-black mb-4 text-center drop-shadow-lg">How to Play:</h3>
+        <ul class="space-y-2 text-black text-xs md:text-sm">
+          <li class="flex items-start gap-2"><span class="text-lg">👨‍🏫</span> <span><strong>Teachers:</strong> Create quizzes, manage questions, and host games</span></li>
+          <li class="flex items-start gap-2"><span class="text-lg">🎮</span> <span><strong>Players:</strong> Join with a PIN and compete in real-time</span></li>
+          <li class="flex items-start gap-2"><span class="text-lg">⚡</span> <span><strong>Scoring:</strong> Points based on speed and correctness - displayed in real-time!</span></li>
         </ul>
       </div>
     </div>
   </div>
 
   <!-- Footer -->
-  <footer class="mt-16 py-8">
+  <footer class="mt-12 py-6 md:py-8">
     <div class="max-w-4xl mx-auto px-4 text-center">
-      <div class="glassmorphism rounded-2xl p-6">
-        <p class="text-white font-semibold text-lg drop-shadow-lg">
+      <div class="glassmorphism rounded-2xl p-4 md:p-6">
+        <p class="text-white font-semibold text-sm md:text-lg drop-shadow-lg">
           &copy; 2026 BSED-MATH. All Rights Reserved. <br> Designed with ❤️ by Jetty.
         </p>
       </div>
@@ -82,5 +91,6 @@
       window.location.href = '/join';
     }
   </script>
+  <script src="/js/math-rain.js"></script>
 </body>
 </html>
