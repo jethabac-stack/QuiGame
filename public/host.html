@@ -54,56 +54,59 @@
     }
   </style>
 </head>
-<body class="bg-gradient-to-br from-indigo-600 to-purple-600 min-h-screen">
-  <div class="max-w-6xl mx-auto px-4 py-8">
-    <nav class="flex justify-between items-center glassmorphism rounded-2xl shadow-2xl p-6 mb-8">
+<body class="bg-black min-h-screen relative overflow-auto">
+  <!-- Math Symbols Rain Canvas -->
+  <canvas id="mathRain" class="fixed inset-0 pointer-events-none"></canvas>
+  
+  <div class="w-full max-w-6xl mx-auto px-4 py-6 md:py-8 relative z-10">
+    <nav class="w-full flex flex-col sm:flex-row justify-between items-center glassmorphism rounded-2xl shadow-2xl p-4 sm:p-6 mb-6 sm:mb-8 gap-4 sm:gap-0">
       <div class="flex items-center gap-3">
-        <img src="/image/logo.png" alt="Story Boarding Portal Logo" class="w-16 h-16">
-        <span class="text-white font-bold text-lg">Story Boarding Portal</span>
+        <img src="/image/logo.png" alt="Story Boarding Portal Logo" class="w-12 h-12 sm:w-16 sm:h-16">
+        <span class="text-white font-bold text-base sm:text-lg">Story Boarding Portal</span>
       </div>
-      <a href="/dashboard" class="glassmorphism-dark text-white px-6 py-2 rounded-xl font-semibold transition duration-300">Back to Dashboard</a>
+      <a href="/dashboard" class="glassmorphism-dark text-white px-4 sm:px-6 py-2 rounded-xl font-semibold text-sm sm:text-base transition duration-300">Back to Dashboard</a>
     </nav>
 
-    <div id="hostNotification" class="hidden mb-6 rounded-2xl border border-red-300 bg-red-50 px-4 py-4 text-sm text-red-700 shadow-sm"></div>
+    <div id="hostNotification" class="hidden mb-4 sm:mb-6 rounded-2xl border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-700 shadow-sm"></div>
 
     <!-- Game Setup -->
-    <div id="setupPhase" class="glass-card rounded-3xl shadow-2xl p-8">
-      <h2 class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 mb-6">Start Your Quiz</h2>
+    <div id="setupPhase" class="glass-card rounded-3xl shadow-2xl p-6 md:p-8">
+      <h2 class="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 mb-5 md:mb-6">Start Your Quiz</h2>
 
-      <div class="mb-6">
-        <p class="text-gray-700 text-lg">Your quiz will be loaded automatically from the host dashboard selection.</p>
+      <div class="mb-5 md:mb-6">
+        <p class="text-gray-700 text-base md:text-lg">Your quiz will be loaded automatically from the host dashboard selection.</p>
       </div>
 
-      <div class="mb-6">
-        <label class="block text-lg font-semibold text-gray-900 mb-3">Your Name (Optional)</label>
+      <div class="mb-5 md:mb-6">
+        <label class="block text-base md:text-lg font-semibold text-gray-900 mb-3">Your Name (Optional)</label>
         <input type="text" id="teacherName" placeholder="Enter your name" class="glass-input w-full px-4 py-3 rounded-xl">
       </div>
 
-      <button id="hostStartButton" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-4 rounded-xl text-lg transition duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">Start Game 🚀</button>
+      <button id="hostStartButton" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-3 md:py-4 rounded-xl text-base md:text-lg transition duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">Start Game 🚀</button>
     </div>
 
     <!-- Game Lobby -->
     <div id="lobbyPhase" class="hidden space-y-6">
-      <div class="glass-card rounded-3xl shadow-2xl p-8 text-center">
-        <h2 class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 mb-4">Game PIN</h2>
-        <div class="glassmorphism rounded-2xl my-6 font-mono p-6 text-8xl font-bold text-black drop-shadow-lg" id="pinDisplay"></div>
-        <p class="text-xl text-gray-900 font-semibold">Share this PIN with players</p>
+      <div class="glass-card rounded-3xl shadow-2xl p-6 md:p-8 text-center">
+        <h2 class="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 mb-4">Game PIN</h2>
+        <div class="glassmorphism rounded-2xl my-6 font-mono p-5 md:p-6 text-6xl md:text-8xl font-bold text-black drop-shadow-lg" id="pinDisplay"></div>
+        <p class="text-lg md:text-xl text-gray-900 font-semibold">Share this PIN with players</p>
       </div>
 
-      <div class="glass-card rounded-3xl shadow-2xl p-8">
-        <h3 id="quizTitle" class="text-3xl font-bold text-black mb-4"></h3>
-        <p id="quizTeacher" class="text-black text-lg mb-2"></p>
-        <p id="questionCount" class="text-black font-semibold text-lg"></p>
+      <div class="glass-card rounded-3xl shadow-2xl p-6 md:p-8">
+        <h3 id="quizTitle" class="text-2xl md:text-3xl font-bold text-black mb-4"></h3>
+        <p id="quizTeacher" class="text-black text-base md:text-lg mb-2"></p>
+        <p id="questionCount" class="text-black font-semibold text-base md:text-lg"></p>
       </div>
 
-      <div class="glass-card rounded-3xl shadow-2xl p-8">
-        <h3 class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 mb-6">👥 Players Joined (<span id="playerCount">0</span>)</h3>
-        <div id="playersList" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3"></div>
+      <div class="glass-card rounded-3xl shadow-2xl p-6 md:p-8">
+        <h3 class="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 mb-6">👥 Players Joined (<span id="playerCount">0</span>)</h3>
+        <div id="playersList" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3"></div>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
-        <button onclick="beginQuiz()" class="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-4 rounded-xl text-lg transition duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">Start Quiz ✅</button>
-        <button onclick="endGame()" class="bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 text-white font-bold py-4 rounded-xl text-lg transition duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">End Game ❌</button>
+        <button onclick="beginQuiz()" class="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-3 md:py-4 rounded-xl text-base md:text-lg transition duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">Start Quiz ✅</button>
+        <button onclick="endGame()" class="bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 text-white font-bold py-3 md:py-4 rounded-xl text-base md:text-lg transition duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">End Game ❌</button>
       </div>
     </div>
 
@@ -111,14 +114,14 @@
     <div id="gamePhase" class="hidden space-y-6">
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <!-- Question Display -->
-        <div class="lg:col-span-2 glass-card rounded-3xl shadow-2xl p-8">
-          <div class="flex justify-between items-center mb-6">
-            <h2 id="questionNumber" class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600"></h2>
-            <div class="text-4xl font-bold text-red-600 glassmorphism px-6 py-3 rounded-xl animate-pulse" id="questionTimer"></div>
+        <div class="lg:col-span-2 glass-card rounded-3xl shadow-2xl p-6 md:p-8">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 md:gap-0 mb-6">
+            <h2 id="questionNumber" class="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600"></h2>
+            <div class="text-3xl md:text-4xl font-bold text-red-600 glassmorphism px-5 py-3 rounded-xl animate-pulse" id="questionTimer"></div>
           </div>
           
-          <div class="glassmorphism rounded-2xl p-6 mb-6">
-            <h3 id="questionText" class="text-2xl font-semibold text-black drop-shadow-lg"></h3>
+          <div class="glassmorphism rounded-2xl p-5 md:p-6 mb-6">
+            <h3 id="questionText" class="text-xl md:text-2xl font-semibold text-black drop-shadow-lg"></h3>
           </div>
           
           <div id="optionsDisplay" class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6"></div>
@@ -128,7 +131,7 @@
 
         <!-- Live Leaderboard Sidebar -->
         <div class="glassmorphism rounded-3xl shadow-2xl p-6">
-          <h3 class="text-2xl font-bold text-black mb-6 flex items-center gap-2 drop-shadow-lg">
+          <h3 class="text-2xl md:text-3xl font-bold text-black mb-6 flex items-center gap-2 drop-shadow-lg">
             <span class="text-3xl">🏆</span> Live Scores
           </h3>
           <div id="leaderboard" class="space-y-2 max-h-96 overflow-y-auto"></div>
@@ -163,18 +166,19 @@
   </div>
 
   <!-- Footer -->
-  <footer class="mt-16 py-8">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <div class="glassmorphism rounded-2xl p-6">
-        <p class="text-white font-semibold text-lg drop-shadow-lg">
+  <footer class="mt-12 py-6 md:py-8">
+    <div class="w-full max-w-6xl mx-auto px-4 text-center">
+      <div class="glassmorphism rounded-2xl p-4 md:p-6">
+        <p class="text-white font-semibold text-sm md:text-lg drop-shadow-lg">
           &copy; 2026 BSED-MATH. All Rights Reserved. <br> Designed with ❤️ by Jetty.
-        </p>
+        </p>       
       </div>
     </div>
   </footer>
 
   <script src="/socket.io/socket.io.js"></script>
   <script type="module" src="/js/host-firebase.js?v=1"></script>
+    <script src="/js/math-rain.js"></script>
 
   <!-- Background Music -->
   <audio id="backgroundMusic" loop preload="auto">

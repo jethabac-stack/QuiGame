@@ -59,34 +59,62 @@
       border: 2px solid rgba(99, 102, 241, 0.5) !important;
       box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
     }
+
+    .glass-card.main-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
   </style>
 </head>
-<body class="bg-gradient-to-br from-indigo-600 to-purple-600 min-h-screen">
-  <div class="max-w-4xl mx-auto px-4 py-8">
-    <nav class="flex justify-between items-center glassmorphism rounded-2xl shadow-2xl p-6 mb-8">
+<body class="bg-black min-h-screen relative overflow-hidden">
+  <!-- Math Symbols Rain Canvas -->
+  <canvas id="mathRain" class="fixed inset-0 pointer-events-none"></canvas>
+  
+  <div class="w-full mx-auto px-4 py-6 md:py-8 relative z-10">
+    <nav class="w-full flex flex-col sm:flex-row justify-between items-center glassmorphism rounded-2xl shadow-2xl p-4 sm:p-6 mb-6 sm:mb-8 gap-4 sm:gap-0">
       <div class="flex items-center gap-3">
-        <img src="/image/logo.png" alt="Story Boarding Portal Logo" class="w-16 h-16">
-        <span class="text-white font-bold text-lg">Story Boarding Portal</span>
+        <img src="/image/logo.png" alt="Story Boarding Portal Logo" class="w-12 h-12 sm:w-16 sm:h-16">
+        <span class="text-white font-bold text-base sm:text-lg">Story Boarding Portal</span>
       </div>
-      <a href="/" class="glassmorphism-dark text-white px-6 py-2 rounded-xl font-semibold transition duration-300 hover:bg-opacity-30">Back Home</a>
+      <a href="/" class="glassmorphism-dark text-white px-5 py-2 rounded-xl font-semibold text-sm sm:text-base transition duration-300 hover:bg-opacity-30">Back Home</a>
     </nav>
 
     <!-- Join Phase -->
-    <div id="joinPhase" class="glass-card rounded-3xl shadow-2xl p-8 max-w-md mx-auto">
-      <h2 class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 mb-8 text-center">Enter Game Details</h2>
-      
-      <div class="mb-6">
-        <label class="block text-lg font-semibold text-gray-900 mb-3">🎯 Game PIN *</label>
-        <input type="text" id="gamePin" placeholder="Enter 6-digit PIN" maxlength="6" pattern="[0-9]{6}" class="glass-input w-full px-4 py-3 rounded-xl text-2xl text-center font-bold tracking-widest">
-        <div id="joinError" class="hidden mt-3 rounded-xl border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-700"></div>
+    <div id="joinPhase" class="glass-card main-card rounded-3xl shadow-2xl p-6 md:p-8 max-w-md w-full mx-auto">
+      <div class="text-center mb-8">
+        <h2 class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 mb-2">Join Game</h2>
+        <p class="text-gray-600 font-semibold">Enter your details to get started</p>
       </div>
 
-      <div class="mb-8">
-        <label class="block text-lg font-semibold text-gray-900 mb-3">👤 Your Nickname *</label>
-        <input required type="text" id="playerNickname" placeholder="Enter your name" maxlength="20" class="glass-input w-full px-4 py-3 rounded-xl">
-      </div>
+      <form onsubmit="event.preventDefault(); joinGame();" class="space-y-6">
+        <div>
+          <label class="block text-sm font-bold text-gray-800 mb-3 flex items-center gap-2">
+            <span class="text-xl">🎯</span>
+            <span>Game PIN</span>
+            <span class="text-red-500">*</span>
+          </label>
+          <input type="text" id="gamePin" placeholder="123456" maxlength="6" pattern="[0-9]{6}" class="glass-input w-full px-4 py-3 rounded-xl text-2xl text-center font-bold tracking-widest focus:ring-2 focus:ring-indigo-500" required>
+          <div id="joinError" class="hidden mt-3 rounded-lg border border-red-400 bg-red-50 px-4 py-3 text-sm text-red-700 font-medium"></div>
+        </div>
 
-      <button onclick="joinGame()" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-3 rounded-xl text-lg transition duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">Join Game 🚀</button>
+        <div>
+          <label class="block text-sm font-bold text-gray-800 mb-3 flex items-center gap-2">
+            <span class="text-xl">👤</span>
+            <span>Your Nickname</span>
+            <span class="text-red-500">*</span>
+          </label>
+          <input type="text" id="playerNickname" placeholder="Enter your name" maxlength="20" class="glass-input w-full px-4 py-3 rounded-xl text-base focus:ring-2 focus:ring-indigo-500" required>
+        </div>
+
+        <button type="submit" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-3 rounded-xl text-lg transition duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 mt-8">
+          Join Game 🚀
+        </button>
+      </form>
+
+      <div class="mt-8 pt-6 border-t border-gray-300 text-center">
+        <p class="text-xs text-gray-500">Ready to challenge your classmates?</p>
+      </div>
     </div>
 
     <!-- Waiting Phase -->
@@ -153,15 +181,15 @@
 
     <!-- Results Phase -->
     <div id="resultsPhase" class="hidden">
-      <div class="glass-card rounded-3xl shadow-2xl p-8 max-w-2xl mx-auto">
-        <h2 class="text-5xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 mb-8">Quiz Finished! 🎉</h2>
+      <div class="glass-card rounded-3xl shadow-2xl p-6 md:p-8 max-w-2xl w-full mx-auto">
+        <h2 class="text-4xl md:text-5xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 mb-8">Quiz Finished! 🎉</h2>
         
-        <div class="glassmorphism rounded-2xl p-8 mb-8 text-center">
-          <p class="text-lg text-black font-semibold mb-2 drop-shadow-md">Your Final Score</p>
-          <p id="finalScore" class="text-6xl font-bold text-black drop-shadow-lg">0</p>
+        <div class="glassmorphism rounded-2xl p-6 md:p-8 mb-8 text-center">
+          <p class="text-lg md:text-xl text-black font-semibold mb-2 drop-shadow-md">Your Final Score</p>
+          <p id="finalScore" class="text-5xl md:text-6xl font-bold text-black drop-shadow-lg">0</p>
         </div>
 
-        <h3 class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 mb-6">🏆 Final Leaderboard</h3>
+        <h3 class="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 mb-6">🏆 Final Leaderboard</h3>
         <div id="finalLeaderboard" class="space-y-3 mb-8"></div>
 
         <button onclick="goHome()" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-3 rounded-xl transition duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">Back to Home 🏠</button>
@@ -170,10 +198,10 @@
   </div>
 
   <!-- Footer -->
-  <footer class="mt-16 py-8">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <div class="glassmorphism rounded-2xl p-6">
-        <p class="text-white font-semibold text-lg drop-shadow-lg">
+  <footer class="mt-12 py-6 md:py-8">
+    <div class="w-full mx-auto px-4 text-center">
+      <div class="glassmorphism rounded-2xl p-4 md:p-6">
+        <p class="text-white font-semibold text-sm md:text-lg drop-shadow-lg">
           &copy; 2026 BSED-MATH. All Rights Reserved. <br> Designed with ❤️ by Jetty.
         </p>
       </div>
@@ -188,5 +216,6 @@
 
   <script src="/socket.io/socket.io.js"></script>
   <script type="module" src="/js/player-join-firebase.js"></script>
+  <script src="/js/math-rain.js"></script>
 </body>
 </html>
