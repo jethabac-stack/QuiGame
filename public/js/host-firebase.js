@@ -158,6 +158,29 @@ function startGameWithFirebaseQuiz() {
 function beginQuiz() {
   if (!currentPin) return;
   socket.emit('quiz-start', { pin: currentPin });
+  
+  // Start background music
+  const backgroundMusic = document.getElementById('backgroundMusic');
+  if (backgroundMusic) {
+    backgroundMusic.volume = 0.3; // Set volume to 30%
+    const playPromise = backgroundMusic.play();
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
+        console.log('Background music started successfully');
+      }).catch(error => {
+        console.log('Background music autoplay blocked:', error);
+        // Try to play on next user interaction
+        const playOnInteraction = () => {
+          backgroundMusic.play().catch(e => console.log('Still blocked:', e));
+          document.removeEventListener('click', playOnInteraction);
+          document.removeEventListener('keydown', playOnInteraction);
+        };
+        document.addEventListener('click', playOnInteraction);
+        document.addEventListener('keydown', playOnInteraction);
+        showHostNotification('Click anywhere to start background music', 'info');
+      });
+    }
+  }
 }
 
 // Next question
@@ -174,6 +197,13 @@ function endGame() {
     socket.emit('end-game', { pin: currentPin });
     // Save game stats to Firebase
     saveGameStats();
+    
+    // Stop background music
+    const backgroundMusic = document.getElementById('backgroundMusic');
+    if (backgroundMusic) {
+      backgroundMusic.pause();
+      backgroundMusic.currentTime = 0;
+    }
   }
 }
 
@@ -361,12 +391,14 @@ function showHostNotification(message, type = 'error') {
   }
 
   notification.textContent = message;
-  notification.classList.remove('hidden', 'border-red-300', 'bg-red-50', 'text-red-700', 'border-yellow-300', 'bg-yellow-50', 'text-yellow-700', 'border-green-300', 'bg-green-50', 'text-green-700');
+  notification.classList.remove('hidden', 'border-red-300', 'bg-red-50', 'text-red-700', 'border-yellow-300', 'bg-yellow-50', 'text-yellow-700', 'border-green-300', 'bg-green-50', 'text-green-700', 'border-blue-300', 'bg-blue-50', 'text-blue-700');
 
   if (type === 'success') {
     notification.classList.add('border-green-300', 'bg-green-50', 'text-green-700');
   } else if (type === 'warning') {
     notification.classList.add('border-yellow-300', 'bg-yellow-50', 'text-yellow-700');
+  } else if (type === 'info') {
+    notification.classList.add('border-blue-300', 'bg-blue-50', 'text-blue-700');
   } else {
     notification.classList.add('border-red-300', 'bg-red-50', 'text-red-700');
   }

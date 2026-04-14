@@ -63,6 +63,7 @@ function joinGame() {
   socket.emit('player-join', { pin, nickname });
   showPhase('waiting');
   setupSocketListeners();
+  playBackgroundMusic();
 }
 
 function showJoinError(message) {
@@ -142,7 +143,29 @@ async function saveScore() {
 
 // Go home
 function goHome() {
+  stopBackgroundMusic();
   window.location.href = '/';
+}
+
+function playBackgroundMusic() {
+  const backgroundMusic = document.getElementById('backgroundMusic');
+  if (!backgroundMusic) return;
+
+  backgroundMusic.volume = 0.3;
+  const playPromise = backgroundMusic.play();
+  if (playPromise !== undefined) {
+    playPromise.catch(error => {
+      console.log('Background music autoplay blocked:', error);
+    });
+  }
+}
+
+function stopBackgroundMusic() {
+  const backgroundMusic = document.getElementById('backgroundMusic');
+  if (!backgroundMusic) return;
+
+  backgroundMusic.pause();
+  backgroundMusic.currentTime = 0;
 }
 
 // ===== SOCKET LISTENERS =====
@@ -262,6 +285,7 @@ function setupSocketListeners() {
     `).join('');
 
     showPhase('results');
+    stopBackgroundMusic();
     
     // Save score to Firebase
     saveScore();

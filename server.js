@@ -77,6 +77,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use('/image', express.static('image'));
+app.use('/music', express.static('music'));
 
 // Initialize managers
 const quizManager = new QuizManager();
