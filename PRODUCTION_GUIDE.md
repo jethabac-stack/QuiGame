@@ -1,8 +1,8 @@
-# Story Boarding Portal - Production Phase Guide
+# Storyboarding Portal - Production Phase Guide
 
 ## 🎉 What's Ready
 
-Your Story Boarding Portal application is now fully integrated with Firebase! Here's what's been implemented:
+Your Storyboarding Portal application is now fully integrated with Firebase! Here's what's been implemented:
 
 ### ✅ **Complete Infrastructure**
 - **Backend API** with Firebase Admin SDK

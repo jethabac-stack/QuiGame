@@ -1,4 +1,4 @@
-# 🎮 STORY BOARDING PORTAL - Complete Implementation Guide
+# 🎮 STORYBOARDING PORTAL - Complete Implementation Guide
 
 **A production-ready, real-time multiplayer quiz game built with Node.js and Socket.io**
 
@@ -492,7 +492,7 @@ This project teaches:
 
 ## 🎉 You're Ready!
 
-Your Story Boarding Portal is fully functional and ready to use. 
+Your Storyboarding Portal is fully functional and ready to use.
 
 ### Next Steps:
 1. **Start Server:** `npm start`
@@ -566,7 +566,7 @@ Before using in classroom, verify:
 - [ ] Final results display
 - [ ] Game can be ended
 
-✅ **All checked? You're ready to use Story Boarding Portal!**
+✅ **All checked? You're ready to use Storyboarding Portal!**
 
 ---
 
@@ -583,7 +583,7 @@ Before using in classroom, verify:
 
 ## 🎮 Ready to Play!
 
-**The Story Boarding Portal is complete and tested.**
+**The Storyboarding Portal is complete and tested.**
 
 Start with:
 ```bash

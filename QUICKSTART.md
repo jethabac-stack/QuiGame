@@ -1,4 +1,4 @@
-# Quick Start Guide - Story Boarding Portal
+# Quick Start Guide - Storyboarding Portal
 
 ## 🚀 5-Minute Setup
 
