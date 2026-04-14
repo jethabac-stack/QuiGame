@@ -1,4 +1,4 @@
-# 🎮 Story Boarding Portal - Complete Project Summary
+# 🎮 Storyboarding Portal - Complete Project Summary
 
 Your multiplayer quiz game is **ready to use**! The entire project has been built and tested.
 

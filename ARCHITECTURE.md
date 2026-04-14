@@ -1,10 +1,10 @@
-# Story Boarding Portal - Architecture & System Design
+# Storyboarding Portal - Architecture & System Design
 
 ## System Architecture Diagram
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                     STORY BOARDING PORTAL SYSTEM                          │
+│                     STORYBOARDING PORTAL SYSTEM                          │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                  │
 │  ┌──────────────────────────────────────────────────────────┐   │
@@ -488,7 +488,7 @@ CMD ["npm", "start"]
 
 ## Summary
 
-The Story Boarding Portal uses a **three-tier architecture**:
+The Storyboarding Portal uses a **three-tier architecture**:
 
 1. **Client Tier** - HTML/CSS/JS browsers
 2. **Application Tier** - Node.js/Express/Socket.io
