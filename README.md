@@ -1,4 +1,4 @@
-# 🎮 Quiz Master - Multiplayer Quiz Game
+# 🎮 Story Boarding Portal - Multiplayer Quiz Game
 
 A real-time multiplayer quiz game built with Node.js, Express, and Socket.io. Teachers create quizzes and host games, while players compete to answer questions correctly and climb the leaderboard.
 

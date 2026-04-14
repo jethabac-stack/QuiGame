@@ -1,7 +1,7 @@
 # Frontend Pages Setup Guide
 
 ## Overview
-Three new frontend pages have been created for the Firebase-integrated Quiz Master application:
+Three new frontend pages have been created for the Firebase-integrated Story Boarding Portal application:
 
 1. **auth.html** - Host registration and login page
 2. **dashboard.html** - Complete host dashboard with quiz management

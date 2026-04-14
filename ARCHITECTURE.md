@@ -1,10 +1,10 @@
-# Quiz Master - Architecture & System Design
+# Story Boarding Portal - Architecture & System Design
 
 ## System Architecture Diagram
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                     QUIZ MASTER SYSTEM                          │
+│                     STORY BOARDING PORTAL SYSTEM                          │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                  │
 │  ┌──────────────────────────────────────────────────────────┐   │
@@ -488,7 +488,7 @@ CMD ["npm", "start"]
 
 ## Summary
 
-The Quiz Master uses a **three-tier architecture**:
+The Story Boarding Portal uses a **three-tier architecture**:
 
 1. **Client Tier** - HTML/CSS/JS browsers
 2. **Application Tier** - Node.js/Express/Socket.io

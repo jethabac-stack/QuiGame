@@ -1,4 +1,4 @@
-# 🎮 QUIZ MASTER - Complete Implementation Guide
+# 🎮 STORY BOARDING PORTAL - Complete Implementation Guide
 
 **A production-ready, real-time multiplayer quiz game built with Node.js and Socket.io**
 
@@ -492,7 +492,7 @@ This project teaches:
 
 ## 🎉 You're Ready!
 
-Your Quiz Master is fully functional and ready to use. 
+Your Story Boarding Portal is fully functional and ready to use. 
 
 ### Next Steps:
 1. **Start Server:** `npm start`
@@ -566,7 +566,7 @@ Before using in classroom, verify:
 - [ ] Final results display
 - [ ] Game can be ended
 
-✅ **All checked? You're ready to use Quiz Master!**
+✅ **All checked? You're ready to use Story Boarding Portal!**
 
 ---
 
@@ -583,7 +583,7 @@ Before using in classroom, verify:
 
 ## 🎮 Ready to Play!
 
-**The Quiz Master is complete and tested.**
+**The Story Boarding Portal is complete and tested.**
 
 Start with:
 ```bash

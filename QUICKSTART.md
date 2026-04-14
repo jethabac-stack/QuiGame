@@ -1,4 +1,4 @@
-# Quick Start Guide - Quiz Master
+# Quick Start Guide - Story Boarding Portal
 
 ## 🚀 5-Minute Setup
 

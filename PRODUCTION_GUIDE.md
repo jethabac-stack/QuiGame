@@ -1,8 +1,8 @@
-# Quiz Master - Production Phase Guide
+# Story Boarding Portal - Production Phase Guide
 
 ## 🎉 What's Ready
 
-Your Quiz Master application is now fully integrated with Firebase! Here's what's been implemented:
+Your Story Boarding Portal application is now fully integrated with Firebase! Here's what's been implemented:
 
 ### ✅ **Complete Infrastructure**
 - **Backend API** with Firebase Admin SDK

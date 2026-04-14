@@ -76,6 +76,7 @@ const io = socketIo(server, {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
+app.use('/image', express.static('image'));
 
 // Initialize managers
 const quizManager = new QuizManager();
